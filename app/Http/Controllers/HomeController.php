@@ -122,42 +122,6 @@ public function katil($id)
         }
         return response()->json([$doluzamanlar]);
     }
-
-
-
-    public function test() 
-     {   
-      
-
-        $doctor = doctor::all();
-        $comments=Comments::all();
-        $latestData = Blog:: orderBy('id', 'desc') 
-      ->limit(3) 
-      ->get();
-            if(Auth::id())
-            {
-              
-                if  (Auth::user()->usertype =='0')
-                {
-                    return view('user.test',compact('doctor','latestData','comments'));
-                }
-                else{
-                    $bildirimler = notifications::where('okundu', '0')
-                    ->where('kime', Auth::user()->name)
-                    ->get();
-                    $randevu=appointment::where('doctor',Auth::user()->name)->orderBy('id', 'desc')->get();
-                    
-                    return view('admin.home',compact('bildirimler','randevu'));
-                }
-            }
-            else
-            {
-                return view('user.test',compact('doctor','latestData','comments'));
-            }
-
-    }
-
-
     public function redirect() 
      {   
       
@@ -180,7 +144,7 @@ public function katil($id)
                     ->get();
                     $randevu=appointment::where('doctor',Auth::user()->name)->orderBy('id', 'desc')->get();
                     
-                    return view('admin.home',compact('bildirimler','randevu'));
+                    return view('admin.lightmain',compact('bildirimler','randevu'));
                 }
             }
             else
@@ -2796,16 +2760,26 @@ public function gelisimseldegerlendirmeformu()
         }
     }
     
-    public function doctors()
+    public function doctors(Request $request)
     {
-        $doctor=doctor::all();
+
+        $query = $request->get('query');
+       
+        if ($query) {
+            $doctor = Doctor::where('name', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->paginate(6);
+          
+        } else {
+            $doctor=doctor::all();
+          
+        }
         $comments=Comments::all();
-        return view('user.doctors',compact('doctor','comments'));
+        return view('user.doctors',compact('doctor','comments','query'));
     }
     public function about()
     {
         $doctor=doctor::all();
-        return view('user.about',compact('doctor'));
+        $comments=Comments::all();
+        return view('user.about',compact('doctor','comments'));
     }
     public function myappointment()
     {
@@ -2831,10 +2805,10 @@ public function gelisimseldegerlendirmeformu()
         $yorumlar->save();
         return redirect()->back()->with('message','Yorum Gönderildi');
     }
-    public function getprofile($id)
+    public function getprofile($slug)
     {
-        $doktoradi=doctor::where('id',$id)->get();
-        $comments=Comments::where('doktor',$id)->get();
+        $doktoradi=doctor::where('slug',$slug)->get();
+        $comments=Comments::where('doktor',$doktoradi[0]->id)->get();
         $doctor=doctor::all();
         $profile=profile::where('doctorid',$doktoradi[0]->name)->get();
         $latestData = Blog:: orderBy('id', 'desc') // id değeri en yüksek olan ilk gelir

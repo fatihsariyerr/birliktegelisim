@@ -3,14 +3,14 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    @include('admin.css');
+    @include('admin.css')
   </head>
   <body>
     <div class="container-scroller">
       
-    @include('admin.sidebar');
+    @include('admin.sidebar')
       <!-- partial -->
-     @include('admin.navbar');
+     @include('admin.navbar')
         <!-- partial -->
         
         <div class="container-fluid " style="margin-top:70px;">
@@ -243,7 +243,7 @@ background: #F5F9FF;
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    @include('admin.script');
+    @include('admin.script')
     <!-- End custom js for this page -->
   </body>
 </html>

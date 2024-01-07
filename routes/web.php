@@ -20,10 +20,24 @@ use App\Http\Controllers\authcontroller;
 |
 */
 
-
-
-
-Route::get('/test', [HomeController::class, 'test']);
+Route::get('/lightmain',[AdminController::class,'lightmain']);
+Route::get('/lightrandevu',[AdminController::class,'lightrandevu']);
+Route::get('/lightprofile',[AdminController::class,'lightprofile']);
+Route::get('/lightprice',[AdminController::class,'lightprice']);
+Route::post('/lightupload_price', [AdminController::class, 'lightupload_price']);
+Route::post('/lightmusaitlikdegistir', [AdminController::class, 'lightmusaitlikdegistir']);
+Route::get('/lightmusaitlikbelirle',[AdminController::class,'lightmusaitlikbelirle']);
+Route::get('/lightmakaleekle', [AdminController::class, 'lightmakaleekle']);
+Route::post('/lightmakale_ekle', [AdminController::class, 'lightmakale_ekle']);
+Route::post('/lightupdateabout', [AdminController::class, 'lightupdateabout']);
+Route::get('/lightformgoruntule',[AdminController::class,'lightformgoruntule']);
+Route::post('/lightselectgdf', [AdminController::class, 'lightselectgdf']);
+Route::get('/gdfoku',[AdminController::class,'gdfoku']);
+Route::post('/lightgdfgoruntule', [AdminController::class, 'lightgdfgoruntule']);
+Route::get('/lightmessage',[AdminController::class,'lightmessage']);
+Route::get('/lightadddoctor',[AdminController::class,'lightadddoctor']);
+Route::post('/lightupload_doctor', [AdminController::class, 'lightupload']);
+Route::get('/lightuyeler',[AdminController::class,'lightuyelerview']);
 
 
 Route::get('/get-timer/{roomname}', [TimerController::class, 'getTimer']);
@@ -53,7 +67,9 @@ Route::get('/get-doctor-fee/{id}', [HomeController::class, 'getDoctorFee']);
 
 
 
-Route::get('/profile/{id}', [HomeController::class, 'getprofile']);
+Route::get('/takvim', [AdminController::class, 'takvim']);
+
+Route::get('/profile/{slug}', [HomeController::class, 'getprofile']);
 Route::get('/', [HomeController::class, 'redirect']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
@@ -87,9 +103,7 @@ Route::post('/upload_price', [AdminController::class, 'upload_price']);
 
 Route::get('/myappointment', [HomeController::class, 'myappointment']);
 
-Route::get('/sitemap.xml', function () {
-    return response()->file(public_path('sitemap.xml'));
-});
+
 
 
 Route::get('/status', [HomeController::class, 'statusCheck']);
@@ -104,7 +118,7 @@ Route::get('/admincancel_appointment/{id}', [AdminController::class, 'cancelappo
 Route::get('/mesajokundu/{id}', [AdminController::class, 'mesajokundu']);
 
 Route::get('/showappointment', [AdminController::class, 'showappointment']);
-Route::get('/blog/{id}',[BlogController::class, 'blog']);
+Route::get('/blog/{slug}',[BlogController::class, 'blog']);
 
 Route::middleware([
     'auth:sanctum',

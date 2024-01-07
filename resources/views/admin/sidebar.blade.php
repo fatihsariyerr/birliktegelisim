@@ -27,6 +27,16 @@
           @endif
           @if(Auth::user()->usertype == '1')
           <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('takvim')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Takvimi Gör</span>
+            </a>
+          </li>
+          @endif
+          @if(Auth::user()->usertype == '1')
+          <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('updateprofile')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>

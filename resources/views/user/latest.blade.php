@@ -9,20 +9,28 @@
           <div class="card-blog">
             <div class="header">
               <div style="position:absolute;margin-left:170px;" class="post-category">
-                <a href="blog/{{$datalar->id}}">Pedagog</a>
+                <a href="blog/{{$datalar->slug}}">Pedagog</a>
               </div>
-              <a href="blog/{{$datalar->id}}" class="post-thumb">
-                <img loading="lazy" style="height:140px;width:262px;" src="../blogimages/{{$datalar->blogimage}}" alt="">
+              <a href="blog/{{$datalar->slug}}" class="post-thumb">
+                <img loading="lazy" style="height:160px;width:262px;" src="../blogimages/{{$datalar->blogimage}}" alt="">
               </a>
             </div>
             <div class="body">
-              <h5 class="post-title"><a href="blog/{{$datalar->id}}">{{$datalar->title}}</a></h5>
+              <h5 class="post-title"><a href="blog/{{$datalar->slug}}">{{$datalar->title}}</a></h5>
               <div class="site-info">
                 <div class="avatar mr-2">
                   <div class="avatar-img">
                     <img loading="lazy" src="{{$datalar->doctorimage}}" alt="">
                   </div>
-                  <span>{{$datalar->author}}</span>
+                
+                @php
+                    $doctorId = \App\Models\Doctor::where('name', $datalar->author)->value('id');
+                @endphp
+                <a href="{{ url('profile/' . $doctorId) }}">
+                    <span>{{ $datalar->author }}</span>
+                </a>
+
+
                 </div>
                 <span style="position:absolute;margin-top:8px;margin-left:30px;" class="mai-time"><span style="position:relative;margin-left:5px;margin-top:-2px;">{{$datalar->date}}</span></span> 
               </div>

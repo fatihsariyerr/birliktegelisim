@@ -1,3 +1,5 @@
+
+@include('user.header')
 <style type="text/css">
   
 .rate {
@@ -36,7 +38,6 @@
     color: #c59b08;
 }
   </style>
-@include('user.header')
   <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/homepagebg.jpg);">
     <div class="banner-section">
       <div class="container text-center wow fadeInUp">
@@ -51,42 +52,216 @@
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
 
-  <div class="page-section bg-light">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchForm').on('submit', function (e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'GET',
+                url: $(this).attr('action'),
+                data: formData,
+                success: function (data) {
+                  $('#searchResults').html($(data).find('#searchResults').html());
+                }
+            });
+        });
+
+        $('#searchQuery').on('input', function () {
+            $('#searchForm').submit();
+        });
+    });
+</script>
+
+  <div class="page-section ">
     <div class="container">
+      <div class="row">
+      <div  class="col-lg-12">
+    <div class="search-form">
+        <form action="{{ url('/doctors') }}" method="get" id="searchForm">
+            <div class="input-group">
+                          
+            <div class="form-group">
+                <input class="form-field" type="text" placeholder="Uzmanlık Alanı veya Doktor Adı ile Ara" name="query" id="searchQuery" value="{{$query}}">
+                <span>Ara</span>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+ <style>
+  :root {
+
+--input-color: #99A3BA;
+--input-border: #CDD9ED;
+--input-background: #fff;
+--input-placeholder: #CBD1DC;
+
+--input-border-focus: #275EFE;
+
+--group-color: var(--input-color);
+--group-border: var(--input-border);
+--group-background: #EEF4FF;
+
+--group-color-focus: #fff;
+--group-border-focus: var(--input-border-focus);
+--group-background-focus: #678EFE;
+
+}
+
+.form-field {
+display: block;
+width: 100%;
+padding: 8px 16px;
+line-height: 25px;
+font-size: 14px;
+font-weight: 500;
+font-family: inherit;
+border-radius: 6px;
+-webkit-appearance: none;
+color: var(--input-color);
+border: 1px solid var(--input-border);
+background: var(--input-background);
+transition: border .3s ease;
+&::placeholder {
+    color: var(--input-placeholder);
+}
+&:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+}
+}
+
+.form-group {
+position: relative;
+display: flex;
+width: 100%;
+& > span,
+.form-field {
+    white-space: nowrap;
+    display: block;
+    &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+    }
+    &:first-child {
+        border-radius: 6px 0 0 6px;
+    }
+    &:last-child {
+        border-radius: 0 6px 6px 0;
+    }
+    &:not(:first-child) {
+        margin-left: -1px;
+    }
+}
+.form-field {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+& > span {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--group-color);
+    background: var(--group-background);
+    border: 1px solid var(--group-border);
+    transition: background .3s ease, border .3s ease, color .3s ease;
+}
+&:focus-within {
+    & > span {
+        color: var(--group-color-focus);
+        background: var(--group-background-focus);
+        border-color: var(--group-border-focus);
+    }
+}
+}
+
+html {
+box-sizing: border-box;
+-webkit-font-smoothing: antialiased;
+}
+
+* {
+box-sizing: inherit;
+&:before,
+&:after {
+    box-sizing: inherit;
+}
+}
+
+// Center
+body {
+min-height: 100vh;
+font-family: 'Mukta Malar', Arial;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background: #F5F9FF;  
+.form-group {
+    max-width: 360px;
+    &:not(:last-child) {
+        margin-bottom: 32px;
+    }
+}
+}
+  </style>
+    </div>
       <div class="row justify-content-center">
+
+      
         <div class="col-lg-10">
 
-          <div class="row">
+          <div class="row" id="searchResults">
             
          
-            @foreach($doctor as $doctors)
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-              <div class="card-doctor">
-              <a href="../profile/{{$doctors->id}}"> 
-              <div class="header" style="height:240px;">
+          @foreach($doctor as $doctors)
+       
+     
+       <div class="item">
+                 <div class="card-doctor">
+                 <a href="../profile/{{$doctors->slug}}"> 
+                   <div class="header" style="height:240px;">
+                     <img loading="lazy" src="doctorimages/{{$doctors->doctorimage}}" alt="">
+                    
+                   </div>
+       </a>
+               <div class="body">
+                   <a href="../profile/{{$doctors->slug}}">    <p class="text-xl mb-0">{{$doctors->name}} / <span style="color:#a7537d;">{{$doctors->speciality}} </span></p> </a>
+                     <br>
                   
-             <img loading="lazy" src="doctorimages/{{$doctors->doctorimage}}" alt="">
+                     @if(Route::has('login'))
                  
-                </div></a>
-                <div class="body">
-                <a href="../profile/{{$doctors->id}}">    <p class="text-xl mb-0">{{$doctors->name}}</p></a>
-              <span class="text-sm text-grey">{{$doctors->speciality}}</span>
-              <div  class="rate">
-    @for ($i = 5; $i >= 1; $i--)
-    @php
-    $doctorComments = $comments->where('doktor', $doctors->id);
-    $averageRate = $doctorComments->avg('rank');
-    $roundedAverage = ceil($averageRate);
-  
-@endphp
-        <input type="radio" id="star{{ $i }}" name="rate{{$doctors->name}}" value="{{ $i }}" {{ $roundedAverage == $i ? 'checked' : '' }} disabled />
-        <label for="star{{ $i }}" title="{{ $i }} stars">{{ $i }} stars</label>
-    @endfor
-</div>
-                </div>
-              </div>
-            </div>
-            @endforeach
+                 @auth   
+                 <a href="#appointment">    <span  class="badge badge-outline-success w-100">Seans Ücreti : {{$doctors->price}} ₺</span></a>
+            @else
+            <a href="{{url('login')}}">  <span class="badge badge-outline-success w-100">Seans Ücreti : {{$doctors->price}} ₺</span></a>
+            @endauth
+            @endif
+          <br>
+       <div style="position:relative;margin-left:10px;" class="rate">
+           @for ($i = 5; $i >= 1; $i--)
+           @php
+           $doctorComments = $comments->where('doktor', $doctors->id);
+           $averageRate = $doctorComments->avg('rank');
+           $roundedAverage = ceil($averageRate);
+         
+       @endphp
+               <input  type="radio" id="star{{ $i }}" name="rate{{$doctors->name}}" value="{{ $i }}" {{ $roundedAverage == $i ? 'checked' : '' }} disabled />
+               <label  for="star{{ $i }}" title="{{ $i }} stars">{{ $i }} stars</label>
+           @endfor
+       </div>
+                   </div>
+                 </div>
+               </div>
+       @endforeach
           </div>
 
         </div>

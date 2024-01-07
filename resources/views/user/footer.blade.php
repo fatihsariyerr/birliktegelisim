@@ -47,7 +47,7 @@
 
       <hr>
 
-      <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+      <p id="copyright">Copyright &copy; 2023 <a href="https://birliktegelisim.com" target="_blank">Birlikte Gelişim</a>. All right reserved</p>
     </div>
   </footer>
 

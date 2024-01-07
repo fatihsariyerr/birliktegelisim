@@ -48,12 +48,7 @@
                                     <td style="padding-top:20px;">{{$appoints->status}}</td>
                                     <td><a class="btn btn-danger" href="{{url('cancel_appointment',$appoints->id)}}">Randevuyu Sil</a></td>
                                   @if($appoints->status=="Kabul Edildi")
-                                    @if($appoints->date==now()->toDateString()&& now()->addHours(3)->addMinutes(5)->format('H:i')>=$appoints->time && now()->addHours(3)->addMinutes(0)->format('H:i')<=$appoints->time  && $appoints->status=='Kabul Edildi')
                                     <td><a class="btn btn-success" href="{{url('joinchat',$appoints->id)}}">Görüşmeye Katıl</a></td>
-                                  @else
-                                  <td><a style="pointer-events:none;" class="btn btn-light" href="{{url('joinchat',$appoints->id)}}">Görüşmeye Katıl</a></td>
-                                  
-                                    @endif
                                     @else
                                     <td><a class="btn btn-success" href="{{url('payment',$appoints->id)}}">Ödeme Yap</a></td>
                                   @endif

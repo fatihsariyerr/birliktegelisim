@@ -86,7 +86,7 @@
                 @csrf
                 @foreach($doktor as $doktors)
                 <div style="padding:15px;">
-                    <label>Profildeki Hakkımda Yazısı (<a target="_blank" href="https://birliktegelisim.com/profile/{{$doktors->id}}">Görüntüle</a>)</label> <hr> <br>
+                    <label>Profildeki Hakkımda Yazısı (<a target="_blank" href="https://birliktegelisim.com/profile/{{$doktors->slug}}">Görüntüle</a>)</label> <hr> <br>
                     <textarea id="editor" name="content" placeholder="İçerik"> </textarea>
                 </div>
              @endforeach

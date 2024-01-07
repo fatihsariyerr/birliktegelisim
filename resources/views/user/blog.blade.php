@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Doktorlarınızla güvenli ve hızlı bir şekilde görüntülü görüşmeler ayarlayın. Sağlık sorularınızı uzaktan çözün, randevularınızı kolayca planlayın.">
 
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <meta name="copyright" content="Birlikte Gelişim">
   <link rel="icon" type="image/x-icon" href="../favicon/favicon3.png">
  <script src="//code.tidio.co/gtuuwxd0nfyi5rez6x0vq2npffr9l5xc.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.2/lottie.min.js" integrity="sha512-vUtWeTFNtPyJbdP2eG8etyAhG1ssqBQkaD5SEWJkaDeJJylxg8ZkL0SkcQEAJXLmzpXjE1QFN7GK/zOMHP8vBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -177,10 +177,10 @@ body {
       </div> <!-- .row -->
 
       <div class="row">
-      <div class="col-sm-8 py-4">
+      <div class="col-sm-8 py-12">
           <article class="blog-details">
             <div  class="post-thumb">
-              <img src="../blogimages/{{$blogs->blogimage}}" alt="">
+              <img  src="../blogimages/{{$blogs->blogimage}}" alt="">
             </div>
             <div class="post-meta">
               <div class="post-author">
@@ -194,11 +194,7 @@ body {
              
             </div>
           
-            <h2 class="post-title h1">{{$blogs->title}}</h2>
-            <div class="post-content">
-             
-            {!! $blogs->content !!}
-            </div>
+          
         
       
           </article> <!-- .blog-details -->
@@ -226,7 +222,19 @@ body {
               @endforeach
             </div>
         </div>
+
       </div> <!-- .row -->
+      <div class="row">
+      <div class="col-sm-12 py-4">
+      <h2 class="post-title h1">{{$blogs->title}}</h2>
+      <br>
+            <div class="post-content">
+             
+            {!! $blogs->content !!}
+            
+            </div>
+
+      </div></div>
       @endforeach
     </div> <!-- .container -->
   </div>

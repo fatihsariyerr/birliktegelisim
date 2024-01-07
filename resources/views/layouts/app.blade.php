@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/x-icon" href="favicon/favicon1.png">
         <title>Birlikte Gelişim</title>
+        <meta name="description" content="Doktorlarınızla güvenli ve hızlı bir şekilde görüntülü görüşmeler ayarlayın. Sağlık sorularınızı uzaktan çözün, randevularınızı kolayca planlayın.">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

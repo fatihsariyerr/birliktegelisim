@@ -6,8 +6,8 @@
   <title>Birlikte Gelişim</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Doktorlarınızla güvenli ve hızlı bir şekilde görüntülü görüşmeler ayarlayın. Sağlık sorularınızı uzaktan çözün, randevularınızı kolayca planlayın.">
-
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <link rel="canonical" href="http://www.birliktegelisim.com/">
+  <meta name="copyright" content="Birlikte Gelişim">
   <link rel="icon" type="image/x-icon" href="favicon/favicon3.png">
  <script src="//code.tidio.co/gtuuwxd0nfyi5rez6x0vq2npffr9l5xc.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.2/lottie.min.js" integrity="sha512-vUtWeTFNtPyJbdP2eG8etyAhG1ssqBQkaD5SEWJkaDeJJylxg8ZkL0SkcQEAJXLmzpXjE1QFN7GK/zOMHP8vBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

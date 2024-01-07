@@ -1,7 +1,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Doktor Paneli | Birlikte Gelişim </title>
-    <link rel="icon" type="image/x-icon" href="favicon/favicon1.png">
+    <link rel="icon" type="image/x-icon" href="../favicon/favicon3.png">
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -17,4 +17,4 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="assets/images/favicon3.png" />

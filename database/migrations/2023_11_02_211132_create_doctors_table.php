@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('musaitlik')->nullable();
             $table->timestamps();
+            $table->string('slug')->nullable();
         });
     }
 

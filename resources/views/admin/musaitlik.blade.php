@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    @include('admin.css');
+    @include('admin.css')
     <style type="text/css">
        label{
         display:inline-block;
@@ -16,9 +16,9 @@
   <body>
   <div class="container-scroller">
       
-      @include('admin.sidebar');
+      @include('admin.sidebar')
         <!-- partial -->
-       @include('admin.navbar');
+       @include('admin.navbar')
           <!-- partial -->
           <div class="container-fluid page-body-wrapper">
   
@@ -38,7 +38,7 @@
                
                 
                 
-                        <select name="musaitlik" style="width:300px;color:black;">
+                        <select class="form-select" name="musaitlik" style="width:300px;color:black;">
                         <option >--Seçiniz--</option>
                             <option value="musait">Müsait</option>
                             <option value="musaitdegil">Müsait Değil</option>

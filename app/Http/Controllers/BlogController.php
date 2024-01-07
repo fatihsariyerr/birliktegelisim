@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     //
-    public function blog($id)
+    public function blog($slug)
     {
          
         $latestData = Blog:: orderBy('id', 'desc')
-      ->limit(5) 
+      ->limit(3) 
       ->get();
-        $blog=blog::where('id',$id)->get();
+        $blog=blog::where('slug',$slug)->get();
        
         return view('user.blog',compact('blog','latestData'));
     }

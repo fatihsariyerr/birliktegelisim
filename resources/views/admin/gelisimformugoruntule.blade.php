@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    @include('admin.css');
+    @include('admin.css')
     <style type="text/css">
        label{
         display:inline-block;
@@ -16,9 +16,9 @@
   <body>
   <div class="container-scroller">
       
-      @include('admin.sidebar');
+      @include('admin.sidebar')
         <!-- partial -->
-       @include('admin.navbar');
+       @include('admin.navbar')
           <!-- partial -->
           <div class="container-fluid page-body-wrapper">
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('doctorimage')->nullable();
             $table->string('tag')->nullable();
             $table->timestamps();
+            $table->string('slug')->nullable();
         });
     }
 

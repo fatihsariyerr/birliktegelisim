@@ -45,7 +45,7 @@
     <div class="container">
       <div class="row">
 
-      <div  class="col-lg-4">
+      <div  class="col-lg-12">
     <div class="search-form">
         <form action="{{ url('/makaleler') }}" method="get" id="searchForm">
             <div class="input-group">
@@ -186,14 +186,14 @@ background: #F5F9FF;
               <div class="card-blog">
                 <div class="header">
                 <div style="position:absolute;margin-left:170px;" class="post-category">
-                  <a href="blog/{{$blogs->id}}">{{$blogs->tag}}</a>
+                  <a href="../blog/{{$blogs->slug}}">{{$blogs->tag}}</a>
                   </div>
-                  <a href="../blog/{{$blogs->id}}" class="post-thumb">
-                    <img style="width:262px;height:140px;" src="../blogimages/{{$blogs->blogimage}}" alt="">
+                  <a href="../blog/{{$blogs->slug}}" class="post-thumb">
+                    <img style="width:262px;height:160px;" src="../blogimages/{{$blogs->blogimage}}" alt="">
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="../blog/{{$blogs->id}}">{{$blogs->title}}</a></h5>
+                  <h5 class="post-title"><a href="../blog/{{$blogs->slug}}">{{$blogs->title}}</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">

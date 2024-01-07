@@ -49,26 +49,26 @@
      
 <div class="item">
           <div class="card-doctor">
-          <a href="../profile/{{$doctors->id}}"> 
+          <a href="../profile/{{$doctors->slug}}"> 
             <div class="header" style="height:240px;">
               <img loading="lazy" src="doctorimages/{{$doctors->doctorimage}}" alt="">
              
             </div>
 </a>
         <div class="body">
-            <a href="../profile/{{$doctors->id}}">    <p class="text-xl mb-0">{{$doctors->name}}</p> </a>
+            <a href="../profile/{{$doctors->slug}}">    <p class="text-xl mb-0">{{$doctors->name}} / <span style="color:#a7537d;">{{$doctors->speciality}} </span></p> </a>
               <br>
-              <span class="text-sm text-grey">{{$doctors->speciality}}</span>
+           
               @if(Route::has('login'))
           
           @auth   
-          <a href="#appointment">    <span style="position:absolute;margin-top:-2px;margin-left:30px;" class="badge badge-outline-success">Seans Ücreti : {{$doctors->price}} ₺</span></a>
+          <a href="#appointment">    <span  class="badge badge-outline-success w-100">Seans Ücreti : {{$doctors->price}} ₺</span></a>
      @else
-     <a href="{{url('login')}}">  <span style="position:absolute;margin-top:-2px;margin-left:30px;" class="badge badge-outline-success">Seans Ücreti : {{$doctors->price}} ₺</span></a>
+     <a href="{{url('login')}}">  <span class="badge badge-outline-success w-100">Seans Ücreti : {{$doctors->price}} ₺</span></a>
      @endauth
      @endif
    <br>
-<div  class="rate">
+<div style="position:relative;margin-left:10px;" class="rate">
     @for ($i = 5; $i >= 1; $i--)
     @php
     $doctorComments = $comments->where('doktor', $doctors->id);
@@ -76,8 +76,8 @@
     $roundedAverage = ceil($averageRate);
   
 @endphp
-        <input type="radio" id="star{{ $i }}" name="rate{{$doctors->name}}" value="{{ $i }}" {{ $roundedAverage == $i ? 'checked' : '' }} disabled />
-        <label for="star{{ $i }}" title="{{ $i }} stars">{{ $i }} stars</label>
+        <input  type="radio" id="star{{ $i }}" name="rate{{$doctors->name}}" value="{{ $i }}" {{ $roundedAverage == $i ? 'checked' : '' }} disabled />
+        <label  for="star{{ $i }}" title="{{ $i }} stars">{{ $i }} stars</label>
     @endfor
 </div>
             </div>
